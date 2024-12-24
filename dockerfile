@@ -1,22 +1,18 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10-slim
+# Menggunakan image Python sebagai base
+FROM python:latest
 
-# Set the working directory in the container
+# Menentukan working directory dalam container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+# Menyalin file requirements dan kode aplikasi ke dalam container
+COPY requirements.txt /app/requirements.txt
 COPY . /app
 
-# Install any needed packages specified in requirements.txt
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 5000 available to the world outside this container
-EXPOSE 5000
+# Menentukan port yang akan digunakan
+EXPOSE 7000
 
-ENV FLASK_RUN_PORT=5024
-
-# Define environment variable
-ENV FLASK_APP=app.py
-
-# Run app.py when the container launches
-CMD ["flask", "run", "--host=0.0.0.0"]
+# Menjalankan aplikasi FastAPI menggunakan Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7000", "--reload"]
