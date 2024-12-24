@@ -129,7 +129,6 @@ def read_h_index(profile_id: str):
     return get_h_index(profile_id)
 
 # Multiple 
-# contoh request = http://localhost:8000/hindexes?profile_ids=5998983,6018129,.....
 @app.get("/sinta/hindex/")
 def read_multiple_h_indexes(profile_ids: str):
     # Memisahkan parameter menjadi list berdasarkan koma
@@ -137,7 +136,6 @@ def read_multiple_h_indexes(profile_ids: str):
     data = [get_h_index(profile_id) for profile_id in profile_id_list]
     return data
 
-# contoh request : http://127.0.0.1:8000/gs/pub/list?gs_id=56jbnvsAAAAJ
 @app.get("/gs/pub/list")
 def get_pubs(gs_id: str):
     try:
@@ -157,4 +155,4 @@ def get_pubs(gs_id: str):
     
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=7000)
