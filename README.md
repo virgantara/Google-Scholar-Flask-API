@@ -19,7 +19,7 @@ Build Image
 Run Image di Container
 
 ```bash
- docker run -d -p 8000:7000 fastapi-sinta-app
+ docker run -d -p 7000:7000 fastapi-sinta-app
 ```
 
 Save Image
