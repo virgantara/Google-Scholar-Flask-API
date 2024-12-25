@@ -61,19 +61,19 @@ def get_profile_unida():
         scopus_documents = scholar_documents = wos_documents = garuda_documents = 'Tidak ditemukan'
 
     return {
-        'Profile ID': '2114',
+        'ProfileID': '2114',
         'Nama': name,
-        'Total Authors': authors,
-        'Total Departements': departements,
-        'Total Journals': journals,
-        'Total Scopus Documents': scopus_documents,
-        'Total Google Scholar Documents': scholar_documents,
-        'Total WoS Documents': wos_documents,
-        'Total Garuda Documents': garuda_documents,
-        'Sinta Score Overall': sinta_score_overall,
-        'Sinta Score 3 Year': sinta_score_3yr,
-        'Sinta Score Productivity': sinta_score_productivity,
-        'Sinta Score Productivity 3 Year': sinta_score_productivity_3yr
+        'authors': authors,
+        'departements': departements,
+        'journals': journals,
+        'scopus_documents': scopus_documents,
+        'scholar_documents': scholar_documents,
+        'wos_documents': wos_documents,
+        'garuda_documents': garuda_documents,
+        'sinta_score_overall': sinta_score_overall,
+        'sinta_score_3yr': sinta_score_3yr,
+        'sinta_score_productivity': sinta_score_productivity,
+        'sinta_score_productivity_3yr': sinta_score_productivity_3yr
     }
 
 # Fungsi untuk mengambil data h-index, nama dosen, dan Sinta Score
