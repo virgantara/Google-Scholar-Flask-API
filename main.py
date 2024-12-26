@@ -87,6 +87,7 @@ def get_h_index(profile_id: str):
     name = name_tag.text.strip() if name_tag else 'Nama tidak ditemukan'
     
     sinta_scores = soup.find_all('div', {'class': 'pr-num'})
+    
     sinta_score_overall = sinta_scores[0].text.strip() if len(sinta_scores) > 0 else 'Tidak ditemukan'
     sinta_score_3yr = sinta_scores[1].text.strip() if len(sinta_scores) > 1 else 'Tidak ditemukan'
 
