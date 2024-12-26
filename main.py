@@ -18,10 +18,10 @@ def fetch_url_content(url: str):
         raise HTTPException(status_code=500, detail=f"Gagal mengambil data dari {url}: {str(e)}")
     return BeautifulSoup(response.content, 'html.parser')   
 
-def get_profile_unida():
+def get_profile_unida(timeout: float):
     url = unida_url
     try:
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=timeout)
         response.raise_for_status()  # Akan memunculkan HTTPError jika status code bukan 200
         soup = BeautifulSoup(response.content, 'html.parser')
 
@@ -97,10 +97,10 @@ def get_profile_unida():
     }
 
 # Fungsi untuk mengambil data h-index, nama dosen, dan Sinta Score
-def get_h_index(profile_id: str):
+def get_h_index(profile_id: str, timeout:float):
     url = base_url + profile_id
     try:
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, timeout=timeout)
     
         soup = BeautifulSoup(response.content, 'html.parser')
 
