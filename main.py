@@ -101,7 +101,7 @@ def get_h_index(profile_id: str, timeout:float):
     url = base_url + profile_id
     try:
         response = requests.get(url, timeout=timeout)
-    
+        response.raise_for_status()
         soup = BeautifulSoup(response.content, 'html.parser')
 
         # Mencari elemen nama dosen
@@ -158,12 +158,12 @@ def get_list_publication(google_scholar_id: str):
 
 
 @app.get("/sinta/profile/kampus")
-def read_profile_unida():
-    return get_profile_unida()
+def read_profile_unida(timeout: float):
+    return get_profile_unida(timeout)
     
 @app.get("/sinta/profile/dosen")
-def read_h_index(profile_id: str):
-    return get_h_index(profile_id)
+def read_h_index(profile_id: str, timeout: float):
+    return get_h_index(profile_id, timeout)
 
 # Multiple 
 @app.get("/sinta/hindex/")
@@ -192,4 +192,4 @@ def get_pubs(gs_id: str):
     
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=7000)
+    uvicorn.run(app, host="0.0.0.0", port=5000)
