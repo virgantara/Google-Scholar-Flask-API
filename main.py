@@ -85,10 +85,12 @@ def get_h_index(profile_id: str):
     # Mencari elemen nama dosen
     name_tag = soup.find('h3')
     name = name_tag.text.strip() if name_tag else 'Nama tidak ditemukan'
+    
+    sinta_scores = soup.find_all('div', {'class': 'pr-num'})
+    sinta_score_overall = sinta_scores[0].text.strip() if len(sinta_scores) > 0 else 'Tidak ditemukan'
+    sinta_score_3yr = sinta_scores[1].text.strip() if len(sinta_scores) > 1 else 'Tidak ditemukan'
 
-    sinta_score_tag = soup.find('div',{'class': 'pr-num'})
-    sinta_score = sinta_score_tag.text.strip() if sinta_score_tag else 'Score Sinta tidak ditemukan'
-
+    
     # Mencari tabel yang berisi data h-index
     table = soup.find('table', {'class': 'table table-borderless table-sm text-center stat-table'})
     rows = table.find_all('tr')
@@ -102,12 +104,13 @@ def get_h_index(profile_id: str):
     wos_h_index = cells[3].text.strip()
 
     return {
-        'Profile ID': profile_id,
+        'ProfileID': profile_id,
         'Nama': name,
-        'Scopus h-index': scopus_h_index,
-        'Google Scholar h-index': scholar_h_index,
-        'WoS h-index': wos_h_index,
-        'Sinta Score': sinta_score
+        'scopus_h_index': scopus_h_index,
+        'gs_h_index': scholar_h_index,
+        'wos_h_index': wos_h_index,
+        'sinta_score_overall': sinta_score_overall,
+        'sinta_score_3yr': sinta_score_3yr
     }
 
 
@@ -124,7 +127,7 @@ def get_list_publication(google_scholar_id: str):
 def read_profile_unida():
     return get_profile_unida()
     
-@app.get("/sinta/profile/dosen/{profile_id}")
+@app.get("/sinta/profile/dosen")
 def read_h_index(profile_id: str):
     return get_h_index(profile_id)
 
