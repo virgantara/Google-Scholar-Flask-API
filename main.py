@@ -7,8 +7,8 @@ from scholarly import scholarly
 app = FastAPI()
 
 # URL dasar dari profil dosen di Sinta & URL profil sinta unida
-base_url = 'https://sinta.kemdikbud.go.id/authors/profile/'
-unida_url = 'https://sinta.kemdikbud.go.id/affiliations/profile/2114'
+base_url = 'https://sinta.kemdiktisaintek.go.id/authors/profile/'
+unida_url = 'https://sinta.kemdiktisaintek.go.id/affiliations/profile/2114'
 
 def fetch_url_content(url: str):
     try:
